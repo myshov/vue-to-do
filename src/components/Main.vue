@@ -1,5 +1,6 @@
 <template>
   <div>
+    <greet name="Alexander" />
     <input type="text" v-model="currentText" v-on:focus="hideErrorMessage" />
     <button v-on:click="addTodo">add</button>
     <div class="error" v-if="isError">Please enter a text</div>
@@ -18,23 +19,21 @@
 <script>
 import TodoItem from './TodoItem.vue';
 import Toolbar from './Toolbar.vue';
+import Greet from './Greet.vue';
 
 export default {
   name: 'Main',
   components: {
     'todo-item': TodoItem,
     toolbar: Toolbar,
+    greet: Greet,
   },
   data: () => ({
     isError: false,
     whatToShow: 'all',
     currentText: '',
-    nextId: 3,
-    todos: [
-      { id: 0, text: 'Learn JavaScript', completed: false},
-      { id: 1, text: 'Learn Vue', completed: false},
-      { id: 2, text: 'Build something awesome', completed: false},
-    ],
+    nextId: 0,
+    todos: [],
   }),
   computed: {
     visibleTodos: function() {
